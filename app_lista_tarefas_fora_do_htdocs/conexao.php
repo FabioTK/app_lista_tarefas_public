@@ -1,0 +1,29 @@
+<?php
+
+    class Conexao {
+        private $host = 'localhost';
+        private $dbname = 'php_com_pdo';
+        private $user = 'root';
+        private $pass = '';
+
+        public function Conectar() {
+            try {
+                $conexao = new PDO(
+                    "msql:host=$this->host;dbname=$this->dbname",
+                    "$this->user",
+                    "$this->pass"
+                );
+
+                return $conexao;
+                
+            } catch (PDOException $e) {
+                echo '<pr>' . $e->getMessage(). '</pr>';
+            }
+        }
+
+
+
+    }
+
+
+?>
