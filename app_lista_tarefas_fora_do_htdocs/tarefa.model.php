@@ -3,7 +3,7 @@
 class Tarefa {
     private $id;
     private $id_status;
-    private $ratefa;
+    private $tarefa;
     private $data_cadastro;
 
     public function __get($atributo) {
