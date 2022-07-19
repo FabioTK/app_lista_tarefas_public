@@ -3,22 +3,21 @@
     require "app_lista_tarefas_fora_do_htdocs/tarefa.service.php";
     require "app_lista_tarefas_fora_do_htdocs/conexao.php";
 
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
-
-    $tarefa = new Tarefa();
-    $tarefa-> __set('tarefa', $_POST['tarefa']);
-
-    $conexao = new Conexao();
-
-    $tarefaService = new TarefaService($conexao, $tarefa);
+    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
     
-    echo '<pre>';
-    print_r($tarefaService);
-    echo '</pre>';
+    if ($acao == 'inserir') {
+    
+        $tarefa = new Tarefa();
+        $tarefa->__set('tarefa', $_POST['tarefa']);
 
-    $tarefaService->inserir();
+        $conexao = new Conexao();
 
+        $tarefaService = new TarefaService($conexao, $tarefa);
+        $tarefaService->inserir();
+        
+        header('Location: nova_tarefa.php?inclusao=1');
+    } elseif ($acao == 'recuperar') {
+        echo 'Chegamos até aqui';
+    }
     
 ?>

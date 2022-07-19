@@ -1,32 +1,35 @@
 <?php
-    //CRUD
-    class TarefaService {
 
-        private $conexao;
-        private $tarefa;
 
-        public function __construct(Conexao $conexao, Tarefa $tarefa) {
-            $this->conexao = $conexao->Conectar();
-            $this->tarefa = $tarefa;
-        }
+//CRUD
+class TarefaService {
 
-        public function inserir() { //create
-            $query = 'insert into tb_tarefas(tarefa)values(:tarefa)';
-            $stmt = $this->conexao->prepare($query);
-            $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
-            $stmt->execute();
-        }
+	private $conexao;
+	private $tarefa;
 
-        public function recuperar() { //read
+	public function __construct(Conexao $conexao, Tarefa $tarefa) {
+		$this->conexao = $conexao->conectar();
+		$this->tarefa = $tarefa;
+	}
 
-        }
+	public function inserir() { //create
+		$query = 'insert into tb_tarefas(tarefa)values(:tarefa)';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+		$stmt->execute();
+	}
 
-        public function atualizar() { //update
+	public function recuperar() { //read
 
-        }
+	}
 
-        public function deletar() { // delete
+	public function atualizar() { //update
 
-        }
-    }
+	}
+
+	public function remover() { //delete
+
+	}
+}
+
 ?>
